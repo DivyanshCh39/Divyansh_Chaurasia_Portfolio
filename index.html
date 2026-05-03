@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divyansh Chaurasia — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #f7f3ee;
+    --bg2:     #eee8df;
+    --bg3:     #e4dbd0;
+    --card:    #ffffff;
+    --border:  #ddd4c5;
+    --text:    #1c1713;
+    --sub:     #5c5047;
+    --muted:   #9c8c7c;
+    --accent:  #b84d0a;
+    --accent2: #e0692e;
+    --teal:    #1a6b6b;
+    --teal2:   #2a8f8f;
+    --gold:    #b08020;
+    --shadow:  0 2px 14px rgba(80,55,30,0.07);
+    --shadow2: 0 8px 32px rgba(80,55,30,0.14);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "DM Sans", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: radial-gradient(circle, rgba(160,120,70,0.12) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none; z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    top: -100px; right: -80px;
+    width: 500px; height: 350px;
+    background: radial-gradient(ellipse, rgba(184,77,10,0.06) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .wrapper {
+    position: relative; z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    display: flex; align-items: center; gap: 52px;
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .photo-wrap {
+    flex-shrink: 0;
+    width: 230px; height: 230px;
+    position: relative;
+  }
+
+  .photo-ring {
+    position: absolute; inset: 0;
+    border-radius: 18px;
+    background: conic-gradient(var(--accent) 0deg, var(--gold) 120deg, var(--teal) 240deg, var(--accent) 360deg);
+    padding: 3px;
+    box-shadow: 0 4px 24px rgba(184,77,10,0.18);
+  }
+
+  .photo-ring-inner {
+    width: 100%; height: 100%;
+    border-radius: 15px;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .photo-img {
+    width: 218px; height: 218px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center 8%;
+    display: block;
+    border: 3px solid var(--card);
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-tag {
+    font-family: "Space Mono", monospace;
+    font-size: 11px; color: var(--teal);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700; line-height: 1.1;
+    color: var(--text); margin-bottom: 8px;
+  }
+
+  h1 span {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 15px; color: var(--sub);
+    margin-bottom: 16px; font-weight: 400;
+  }
+
+  .status-dot {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-family: "Space Mono", monospace;
+    font-size: 11px; color: var(--teal);
+    background: rgba(26,107,107,0.09);
+    border: 1px solid rgba(26,107,107,0.22);
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .status-dot::before {
+    content: "";
+    width: 7px; height: 7px;
+    background: var(--teal); border-radius: 50%;
+    box-shadow: 0 0 6px var(--teal2);
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%,100%{opacity:1} 50%{opacity:0.3}
+  }
+
+  .hero-desc {
+    font-size: 14.5px; color: var(--sub);
+    line-height: 1.78; max-width: 500px;
+    border-left: 3px solid var(--accent);
+    padding-left: 14px;
+  }
+
+  /* ── TABS ── */
+  .tabs-nav {
+    display: flex; gap: 4px;
+    margin-bottom: 32px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 6px;
+    box-shadow: var(--shadow);
+    animation: fadeUp 0.6s 0.08s ease both;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    flex: 1; min-width: 80px;
+    background: none; border: none;
+    color: var(--muted);
+    font-family: "DM Sans", sans-serif;
+    font-size: 13px; font-weight: 500;
+    padding: 10px 14px; border-radius: 9px;
+    cursor: pointer; transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-btn:hover { color: var(--text); background: var(--bg2); }
+  .tab-btn.active {
+    color: #fff; background: var(--accent);
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(184,77,10,0.3);
+  }
+
+  .tab-panel { display: none; animation: fadeUp 0.3s ease both; }
+  .tab-panel.active { display: block; }
+
+  @keyframes fadeUp {
+    from{opacity:0;transform:translateY(14px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .card:hover { box-shadow: var(--shadow2); transform: translateY(-2px); }
+
+  .card-title {
+    font-size: 16.5px; font-weight: 600;
+    color: var(--text); margin-bottom: 6px;
+    display: flex; align-items: center;
+    gap: 10px; flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 10px;
+    font-family: "Space Mono", monospace;
+    padding: 2px 9px; border-radius: 20px;
+    font-weight: 400;
+  }
+
+  .tag-data { background: rgba(26,107,107,0.1);  color: var(--teal); border: 1px solid rgba(26,107,107,0.2); }
+  .tag-ml   { background: rgba(176,128,32,0.1);  color: var(--gold); border: 1px solid rgba(176,128,32,0.2); }
+  .tag-web  { background: rgba(184,77,10,0.09);  color: var(--accent); border: 1px solid rgba(184,77,10,0.18); }
+  .tag-erp  { background: rgba(92,80,71,0.1);    color: var(--sub);    border: 1px solid rgba(92,80,71,0.18); }
+
+  .card p { font-size: 14px; color: var(--sub); line-height: 1.72; margin-top: 6px; }
+
+  .tech-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .pill {
+    font-family: "Space Mono", monospace;
+    font-size: 10px; padding: 3px 9px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 6px; color: var(--sub);
+  }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 4px; }
+
+  .info-block {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 22px;
+    box-shadow: var(--shadow); transition: box-shadow 0.2s;
+  }
+  .info-block:hover { box-shadow: var(--shadow2); }
+
+  .info-label {
+    font-family: "Space Mono", monospace;
+    font-size: 10px; color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .info-value { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  .section-heading {
+    font-family: "Space Mono", monospace;
+    font-size: 10.5px; color: var(--teal);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin: 32px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── STATS ── */
+  .stat-row { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+
+  .stat {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px;
+    flex: 1; min-width: 100px; text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .stat-num {
+    font-family: "Playfair Display", serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--accent); display: block; margin-bottom: 3px;
+  }
+
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px,1fr)); gap: 12px; }
+
+  .skill-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 14px;
+    text-align: center; box-shadow: var(--shadow);
+    transition: all 0.2s; cursor: default;
+  }
+  .skill-card:hover { border-color: var(--accent); box-shadow: var(--shadow2); transform: translateY(-3px); }
+
+  .skill-icon { font-size: 26px; margin-bottom: 8px; }
+  .skill-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .skill-type { font-family: "Space Mono", monospace; font-size: 10px; color: var(--muted); }
+
+  /* ── SKILL BARS ── */
+  .skill-bar-row { margin-bottom: 16px; }
+  .skill-bar-meta { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .skill-bar-name { font-size: 13px; color: var(--text); font-weight: 500; }
+  .skill-bar-pct  { font-family: "Space Mono", monospace; font-size: 11px; color: var(--accent); }
+  .skill-bar-track { height: 5px; background: var(--bg3); border-radius: 99px; overflow: hidden; }
+  .skill-bar-fill  { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--teal2), var(--accent)); }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievement-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px 24px;
+    margin-bottom: 12px;
+    display: flex; gap: 16px; align-items: flex-start;
+    box-shadow: var(--shadow); transition: all 0.2s;
+  }
+  .achievement-card:hover { border-color: var(--teal); box-shadow: var(--shadow2); transform: translateX(4px); }
+
+  .achievement-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+    background: rgba(26,107,107,0.08);
+    border: 1px solid rgba(26,107,107,0.15);
+  }
+
+  .achievement-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+  .achievement-desc  { font-size: 13.5px; color: var(--sub); line-height: 1.65; }
+
+  /* ── CERTS ── */
+  .cert-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px 26px;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 18px;
+    box-shadow: var(--shadow); transition: all 0.2s;
+  }
+  .cert-card:hover { border-color: var(--gold); box-shadow: var(--shadow2); transform: translateY(-2px); }
+
+  .cert-badge {
+    width: 52px; height: 52px; border-radius: 13px;
+    background: linear-gradient(135deg, var(--gold), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; flex-shrink: 0;
+  }
+
+  .cert-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .cert-org   { font-size: 12px; color: var(--muted); font-family: "Space Mono", monospace; }
+
+  .cert-date {
+    margin-left: auto; flex-shrink: 0;
+    font-family: "Space Mono", monospace;
+    font-size: 11px; color: var(--teal);
+    background: rgba(26,107,107,0.08);
+    border: 1px solid rgba(26,107,107,0.18);
+    padding: 5px 12px; border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── LINKS ── */
+  .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .link-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 14px;
+    box-shadow: var(--shadow); transition: all 0.25s;
+  }
+  .link-card:hover { border-color: var(--accent); box-shadow: var(--shadow2); transform: translateY(-3px); }
+
+  .link-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+
+  .link-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .link-url  { font-family: "Space Mono", monospace; font-size: 10px; color: var(--muted); word-break: break-all; }
+  .arrow     { margin-left: auto; color: var(--muted); font-size: 18px; flex-shrink: 0; transition: all 0.2s; }
+  .link-card:hover .arrow { transform: translate(3px,-3px); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center; margin-top: 64px;
+    padding-top: 28px; border-top: 1px solid var(--border);
+    font-family: "Space Mono", monospace;
+    font-size: 11px; color: var(--muted); letter-spacing: 1px;
+  }
+
+  @media(max-width:640px){
+    .hero { flex-direction: column; text-align: center; gap: 24px; }
+    .hero-desc { border-left: none; border-top: 3px solid var(--accent); padding-left: 0; padding-top: 12px; }
+    .about-grid, .links-grid { grid-template-columns: 1fr; }
+    .tab-btn { font-size: 11px; padding: 8px 10px; }
+  }
+
+  /* ── PHOTO UPLOAD ── */
+  .photo-wrap { cursor: pointer; }
+
+  .photo-upload-overlay {
+    position: absolute; inset: 0;
+    border-radius: 16px;
+    background: rgba(184,77,10,0.75);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.2s;
+    z-index: 10; color: #fff;
+    font-family: "Space Mono", monospace;
+    font-size: 11px; letter-spacing: 1px;
+    gap: 6px;
+  }
+
+  .photo-wrap:hover .photo-upload-overlay { opacity: 1; }
+
+  .upload-icon { font-size: 22px; }
+
+  #photoInput { display: none; }
+
+  /* ── CROP MODAL ── */
+  .crop-modal-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  .crop-modal-backdrop.open { display: flex; }
+
+  .crop-modal {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px;
+    max-width: 540px;
+    width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .crop-modal-title {
+    font-family: "Playfair Display", serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--text); margin-bottom: 6px;
+  }
+
+  .crop-modal-sub {
+    font-size: 12px; color: var(--muted);
+    font-family: "Space Mono", monospace;
+    margin-bottom: 18px;
+  }
+
+  .crop-canvas-wrap {
+    position: relative;
+    width: 100%;
+    max-height: 55vh;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px dashed var(--border);
+    background: var(--bg2);
+    user-select: none;
+    cursor: crosshair;
+    flex-shrink: 0;
+  }
+
+  #cropCanvas {
+    width: 100%;
+    height: auto;
+    max-height: 55vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  #cropCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .crop-selection {
+    position: absolute;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.45);
+    cursor: move;
+    box-sizing: border-box;
+  }
+
+  .crop-handle {
+    position: absolute;
+    width: 10px; height: 10px;
+    background: #fff;
+    border: 2px solid var(--accent);
+    border-radius: 2px;
+  }
+  .crop-handle.nw { top:-5px;  left:-5px;  cursor: nw-resize; }
+  .crop-handle.ne { top:-5px;  right:-5px; cursor: ne-resize; }
+  .crop-handle.sw { bottom:-5px; left:-5px; cursor: sw-resize; }
+  .crop-handle.se { bottom:-5px; right:-5px; cursor: se-resize; }
+
+  .crop-actions {
+    display: flex; gap: 10px;
+    margin-top: 18px; justify-content: flex-end;
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-cancel {
+    padding: 10px 22px; border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--bg2); color: var(--sub);
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-cancel:hover { background: var(--bg3); }
+
+  .btn-crop {
+    padding: 10px 26px; border-radius: 9px;
+    border: none;
+    background: var(--accent); color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(184,77,10,0.3);
+  }
+  .btn-crop:hover { background: var(--accent2); }
+
+  .crop-hint {
+    font-size: 11px; color: var(--muted);
+    font-family: "Space Mono", monospace;
+    margin-top: 10px; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="photo-wrap">
+      <div class="photo-ring">
+        <div class="photo-ring-inner">
+          <img class="photo-img" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAEsASwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD61ooooKCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiimyOkaF5HVFHUscAUAOorm9c8eeD9FTdqPiGxi9lfzD+S5Nc8/xt+GKfe8TKP+3SY/8AslK4WZ6LRXnA+OPwvIyPE3Hr9inx/wCgUP8AHH4XJ97xQPws5z/7JTCzPR6K81/4Xr8LeP8Aipjz/wBOM/8A8RSN8d/hWvXxQB9bKf8A+IoCzPS6K8z/AOF8/Cj/AKGpf/AOf/4ij/hfPwp/6Gof+AU//wARQFj0yivM/wDhfPwo/wChqX/wCn/+Ip6fHX4Vu20eKkz72c4H/oFAWZ6TRWL4b8WeGvEcSyaHrdlfhhkLFKN3/fJ5H5VtUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAVS1fVtM0e1a61S/trKEDJeaQKP161R8a67B4f0Ge9kfEmNsKjq7nhQPxr4o+KevXup+I5W1/WvtJI3qiEvszztA6DHTNJsqMbnv/j39oTSLE/ZvCcK6lLk7riQERj6AcmvEPGvxF8S+J2cXmsS7Sf8AUrJsQe2K4UXlkVKpbXkuQBl24/JarSXUUQUCyuEx95mHH8qVmykki5d3N+8m0yrLj/b4H86pSPqmcbolUdM5xSJfQlT5d3GHzwrhgfzp1s09xlhLC/bAYE/hmnsFyHdOBiTUPn/uomf50xhJ95ri5kb1PArT2uqjzYZc+igDiho2dcJCmc8bjzii4GR5buSTcOBnoOtRGJQfmdm/3ga0rlp42IazQY4wGIqlJLKG5t857BqpCZXKbWxnj/dNB9io/MU/zznmAj/gRoWeMnBTH1NMQzPsD9DQZXGADtx6VMPKwdqofc0kkWedp4/u9qEIsabqN1ZXCXFrcPDMpysiMVYH6ivVfB3x68d6BB9mkvI9UgA+Vbxd7L/wIc15AFP94/iKljU/w4PtRYZ9jfDn9oLQ9fkSz1y3j0y7YgK3m/u2/E9Pxr2ayuoL22S5tpUlicZV0YMD+I4r820V9pwoz9a6fwj448V+FnDaRrF5aJnJjWQmM/VehosJo/QOivAfhv8AtD2F3bR2vi+2a3uOFF1bpmN/dl/h/CvdNK1Gx1WyjvdOuorq3kGVkjYEGpFYtUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABSHODimzyxwQvNK6oiDLMxwAK+dvjD8f7ayS40nwmXu7rlDdDiJO3y92+vSlcErnW/HjxDolzo7aDdYa+SVZEG4qAQc4z2r5Nv7CxmvpXnRZ3b/npMVYewp174o1zV7onXLyW8YkHDYPHsO9PD6XMGAx5w42su0k+vNRrc12RQ/s+ygBP+kwu3zKqzcY/D+tPgnuYZD5F4W7bZlLgn65Bqd0h3bFIRmPBJA/WomEcZO4LIQeu9SKq7ER3F5PlvtVjYtnOQ8Y5/SoYpdNVR5thGuBj90+O3XpUkxEiEOY1XoACGqnJbxgMqsCAM5IPWqEW2vbJAvktc5HaRc/qO1VJbkyyFlukDHpuUiqFwkJICOV9QW4qs0br34+tPlQXLkssgOTID2yOhphkkYEq8f581V2tjAOfbNIVI5KmnYRO0kwHzBT+NNZieWT8qiV2XoD9DUiznui0xBuHTBFPRmz96kDIxPGKckYY4BH4mgCRZD/e/OpY2YcgVCqeucVNEoHCsQfSnYCRXXOSDnvUysMY7UxDziRAfepPKBIKZB7A96Yrlm2doyDng16x8Ifinf8AguT7O8IutNk5kiPDL7qfWvJYASwUjB9607T5HHBx7mk1cdz728KeIdN8S6PFqemTLJFIMkA5Kn0PvWtXyX8E/FF54Z1e3CTM1nO+2WFjwVJ6jsDX1hbzJPAk0ZyrjIrMGrElFFFAgooooAKKKKACiiigAooooAKKKKACiisXxzrcXh3wpf6tJtJhiOxWbbvY8AfnQB4x+0t47jlkbwjp93IkMC+bqckL4JHaHPvkfmK+a9St1QLK3yF0ErDspOTgeyqAPxrpPGuoK2oX0RmBkEkbzOTkuRmR8/jx+VczdJJc2VnAfmmnZFfn1JJ/mPyqL3NUrIpqzw6ck08DmOZ8xnoyYz+hwauW1w00A8uH58fedVbP48Vq3PlPGttMu+KOBEXjqAOo/HNdl8PPDNvf2iB0DZbB+mcfyrOpUUUa06fMzyu9luUf5o4hn0XFVBfXAJHlJg/pX0P4h+FlpdRloW2yEfLk/wAXp9K4Wf4WagGyCMg8qV4xU+3j1L9g3seXtdzgZCp9GVSP5VWkuXcAGNBj+7Xpt18Mb1IpHjWNmB4UseffisybwBdQpvnRg2M4GMCj6zBdSlhZs4mIq7AGHf65q1Hbpj/VlR6ZzW5LoU8DY2cD2phsZk6r09aft09h/VGtzFNoDny+T6dKiaHHB3D610AsGPJSnHTmIztzT9sg+rdjmvIJ5HIoNv8A7NdENLYfwGkfTWH8JH4UKshfVmc2YMHpQIiDxW49kw421GbM/wB0itVUTMXQaMuMyJ7jvVlJEP3o16c1YNmc9KYbUjtWikjN02CAbsckds1ZSEhQRyO4qKJGQ4PSrkbBcFcqe4qzJphBEGIA+Y+netK3jJKg54xw3pVe1O6Xy5GUMPusK1bCY7xBdRnO7746g9qdhJnQ6PCq2pkiYN5a5I7H2+tfSvwP8S3WueHmtb9y9zaEJuYcsvY14Bo8dtbGP5CWcBZN3TBzx/ga9X+AaT2vijUbTfmHyAyjqG6fMDWbRbd0e1UUUVJIUUUUAFFFFABRRRQAUUUUAFFFFABXzp+0/wCKyut22hmcPaWX+kTQKPvyAZUE/iDX0XXxt+1OPI+I+pOkzyErGCD2LKOB+X61Mio7nkuv6jK7lGwXlXMhHc4IPNV/tzC5SVc+qj0POKku0S4uJXwPkCKAOevB/UiqEKnfwMhZPyHIpaF6m7p11cSY3MXXdj/gPPFfQfw3tUgsrb5QrGMOefUA14H4ctmub+ytVXa11ckLn0zz+hr6T8FWqQWyzEFkxtXPpXFipWsjuw8fdbOseMGJXbkkDbjtWXcwjJyK1JJtwwASSMc1Wdd3XFck5XNIaGDcw8txwRWDqVokqk45rsprXcTjNULjSixJA61hI6oSR51eaSjMeP0qhJoikkBAfwr0WTR2J6VG2jhRkgClHmNXKJ52dCH/ADz/AEpyaJH3T9K7yTTlSqr2yoxGP0rRSaJ0Zx/9gxsMKDuqG60BlUnaDXYxwnd90VYa13oeMVXtGKx5bc6SQT+7qnJpZ/un8q9Nm0tSx44qtJpKE/crSNdol07nmj6W390/lUT6VJjhCfwr0v8AsdSfu1JHoycfJXTDEXOedKx5RJpsi8eWfyqFrVlBG3I/lXsg8MxTDcU61Zg8A2c3JU89iK64Vu5xzpo8N5QhWX5c5HqKsJclLjJzgH1zXofj34fXemWrX1tA7QJ94gZx7152Ldi/I61307SVzimnFnSx3sslxG4YhXhQAhuwPf8Azmvcvgjd3N34oRIIpQsKMJZAPkMfYZ+vavAdPiBfYp6L/Svqz9n+C3i8HO0MexmkG/v2qKqsgT0PRqKKKwAKKKKACiiigAooooAKKKKACiiigAFfEP7Q91O3xK1VbkRp5zZVckkKMDqfpX29Xyr+2N4Xe116y8Q20WYLtStw2eQ46D8qTHE+fSsn295I1/clsDb0Pp+uKt2tlJHqCoY1JSRwcng7Q35iqZYfPHsIXeoBB6Een44rp7iITalHFGx3XE7quB6gZ/DOfzqHoaR1Zo/CqxfUvGWnQhCywqzg9gSME/gMmvo6CNIlWOIYjQYUegriPDmlad4Q0j7e0TNeSxBHCjJx12r6diT7VnX3jLVSsjJAYVI+UAZPsc15dVurK6PSglCNj0i91G0sULXE6IcdM8/gKqRazFKxCA47ZrxPUtbunumll3b+rF33HPp7Vl3njC9gGIrp1B44ODihUHLS4c6W6PopL9ehGD9KVtUiI+Vl96+Ym+IGqKjpHM4yMElyc1BL4/1x8BZwgHYDI6e9V9TqdCfrED6UudZgyfnX86z7jWYTxuH5187xeNdVyDLKXHStO18YSTKFcMG9zWcsHVRvDEUnoe0S6nGcncPzqrLeKxJDZrzqz18uo3sQc+tXU1bcBh/1rH2M0dSlF7Hbi9UfWpP7RAA5xXGjU8LnfUEusYGd9CpSYNxO4/tBD1IpBfRE8kZ+tefSa2wP3v1qlPr7LzvreGFnIxnXjE9RW6gzgkZ+tTpcwjneo/GvGp/ENw/yozZ9c1Emt3gORIQPYmuyngZHFUxseh7hb6mittVlyPU4rX03XFhlRZkXaxAyvJ/+vXgcWtXDcvLKW6e1a+nazKzhDNLyO+cCulYRxOV11LofUGnTadq2msImjkYoQY3HJBGOVPXvXg3xQ8K6fpGoFrW38hZvuBfuqc8j8iDUvhrxHqFs2N7SJj5Q5JCn1HPFbPiX7b4h8ON9pXzJoHEkMvp6qe5yP5Ct6d4MxaujzbRrHbK0s2VWJ9h46tyMfpmvqb4Kx+T4TaIQvFGkuEDdSMDn881454I8Nrq2pW+nINqSyq77v4VHXPvzX0tZ20VnaxWsChY41CqB7VdWVzNImooorEYUUUUAFFFFABRRRQAUUUUAFFFFABXI/FrwfbeNPB9zpkoxOgMtu2cYcdM+1ddUc88NvH5k8qRr6scUMEfnXeWQtLqa0uVw8bMG/DtXWfD+xGpeNNGd/uE+af8AgKktn+VegftQ+FdNfWf+Ej0NvNedP9JiRTjcP4qyPgbZpJf21wEPy2BfLDkMWAIrlrTSg7M66UHzJtHomtoigM6qccDPbua5DXLm2SIg7Rz1Ndf4uRhGCoPAzXi3iya+e4dIgSK8iPNJ8tz1oJJXK+tX1uXI+TrXNXcsLscgHNMdLYOW1DUJF/6Zwpkk/U9KLM2ErkW2kSXZBH+sck16FOlyownWT0sZ08Ns7Z4BPoarGBFPEh/GrmqzGKdom0uO2cclRkVnvIDtIEZyM4U9PY+9dcE7HFOULkyRxg8tzVmMRgfKaqCJvIWb5MN23c0I2D3FXa5MZJdDZgnIwAatx3jg8MfrWfY21xOqmON2BOM4OK7Lw54R+3EGeR09cCsJuMdzqhzPYxxeyFcFqja6kzyeK7q48BiKFijs3px1rl9b0d7A4KmlTlCTshzU0jJaYt3NNULnLY/GmSxsoJ5psOWb/E13QgcNSfcsKqNVqC3hPU1WkjaNFYMjEnoOcVPCSI870znAXbz9a3Ub7GDkupo28VuvRVrStRFnoKz9OgmuM7Qh2+taNvBKrFWtmO3qyDOPyocDRVLdDo9EC71K4/KvU/BVgl1YaijKC32Zig9SASK8g0lmWYBGf6Ec16z8NLiWPUoZHz5ZO1we4PFctWDi7mqkpIvfA2wkOoyXdzGp2KyqxH8Vew14lb6w3hq+nsLeNTMk7KSeijd1/wAK9nsZ47qzhuYmDJIgYEfSlzXepnVoyppN7MmooopmIUUUUAFFFFABRRRQAUUUUAFFFFABXz/+1Dq99a61pUdlPPbtDEzBkcj5ietfQFeF/tP6e9xPYXEaAlIyScds4rizDSi/kepkyi8XFS8/yOB8MeINY1rSpTfotwkTbGcDl+PSuh8BQ2sWs3slogjQxINgGApJJIrJ8IGLSfBrzzIAZbhuD6ACrngrWbfUNZvRDGIyqJwB15PNePTnrJI9fGUtW0tEztb+3SdizDNc3qfhuxuFYSQAg9ccZrq1IOD1p/kBx601JpnEpNHlWo6BYWBMlvpNrwc5MQY/ma5DVmtI5HIsbeN8YUhSpU5zkele93OmRSghkBrE1LwhaXQPyD8q2WIY1GD1Z8/a01vdIodIm2KFAYhiKxJLe1HCrGPote7aj8OoSSVtoOv93msibwHDFwbaH8ErojilFdRSoKWqPHBAjHbHCWP0rb0Tw9dXcgb7OAM8cV6Xb+HLK1Pzwrx2xitW0igVlSKNVFU8ZdWSJWFSd2YGmeHTBboj8t16cV2/hvQwArYxirukaZ9pcNgGu10/TBbxAHA9sVye9UZrOcYKyMC40xFg6ZNcb4t8Oi6spGRAWUZAxXqV7HHtIGM+lZyWgmLx9iDnirgnGSsZc946nzpd6FIrFdhPPSqUmiSpz5efwr2fxDoDWzsWj4zkHFcpdQoj7ePoa9SnXaRyzoqTucALEo3zREfhU8cEfeMD8K7q3tLeXG5F/Kr0Gk2zEYjQ/hW31pLoR9VucVYxqCFVePSuy8OTz25JiUAt/sCte00iIEYRPyrc07TI9w+QD8Kh4pMbw9tWQafa/apA80Sk+4rrdGsEt0BUAdxgUun6fEqggDI9q0lQRjFPmctznlpojkfHtht8RPeIvy3KI7H/AGsYP8q9K+Hc803hmFJk2iI7EOPvCuX8SW6zxWTsM702j6hv8M16BpNqljplvaoSVjQfrzVJX1Na9bmoxiy1RRRVHEFFFFABRRRQAUUUUAFFFFABRRRQAVieM/D9v4i0WSymAEoBaFz/AAt/hW3RUzipxcXsVCcoSUo7o+aNS0maCzk0O4BiKuxQtxz3U+9YvhTRb/RfEPnSoVgmjKZPTrkfyr334geEl1VHvrOJWnx+9ix/rB6j/arzeLTb2wgnHnSTwtGVWOU5aP6V8/UoSoVGnsfR08Yq9J9zWtZAyD1rRtiuOetc3Bc7Mc8daurf4XO8Vi3ZmXI3sb7KuM5FU7i4ih6nmsK41h1BG/NYOo6wSCWbml7TsXGg29TpbzWY0ztxx61z2qa4GOBiudvtWBB+Y1z97qZJ4NXFSkbqEIG5qWqL1Jrb8AaPea4zXrHZao20E9XI6gf41wVgGu7gbsnJr0Xw/rkuhaMbcAlEZnBUepya35VFETk3oj0bS9LjtWUlgAO1aE8oU5Y4z0FeI3nxYhW6MYa4G04J2HFTQfEaC6XH2kNn/arVc6WkTkdNSeskenalexK5Ifk+lUrLU7eO4+eXGa88ufFcTjKv+tUH8RbnyG/WqhCTd7GkoQUbNnuMn2PUbBofkcMDjnoexrlNW+HtvqKeZb6hHa3QHClwwP1H+Brzibxi1uu0TEn0U81Npfi2+nkDeRMsf99jXUlN62ORRUdFIrzrc6ZqU9hdgLNA5R8HIz6g+h61p2V30OayNWma7upLp+Xc5JqvDcNEcZrdU+ZDVSx3NneKOtbdjfKpHIrz62vunNadrf4Od1T7B3G6iaPU9Ov4WA3elWZ5lbGK8/07UjwN1dJZ3XmhQGJzVJNHLOCvc7nT9NF6umyuAUh3uwPQ8101U9EQx6VbqeuzJq5Wy2OSTuwooopkhRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABWLr/h611MGVCILk/wAYGQ31FbVFTOEZq0kVGbg7o+f/ABFp93pF9JZ3K7XRiQR0YZ4I9qyXuWHUke1eo/GLSt8UGqxxsSP3crZ4A7V5PKoJwTivn8TS5JtHvYWrzwTKl9ctkkZrC1G4k2tyc+tblzFkEdaxdTtiAcdK54JJ6nbe6ObvrwpkFzWU14DJy1XNZt2VWI/OsjS7CK5naS7ujFFHjdxyfpXp0ox5bnHVm07HYeGH+0sFt1LsOuO1d3Z2eIM3D4BHauF0fxPpOmRC2gEaxqepABatMeNNObG6Zce3NRKEm7pC53bcu+ItB0q7Bk8gtKf4h8prh73w+8bnyRIcHuM108/jGyIP2e2eU9mfAFZN14kvZnO3yYl9ET+tdNJVEZyhF7swDb3sLbQ0gH1qWKK9fjMpB74q9/aUpyXlUn3AqGXVZCcC4XHoCK64uXYydJdzZ0DSA/zSxFmHIz0/KuiW2mRBuj4+nSuDgv7wtmIzt7qDVxNe1iEc/aSo/vKSK05JMxlBI6yeBtvAxWRdhk9aoR+L5eEuItx/3SKtR6pb3i56E9sVUYyg9UZSaeiY62uWDYzWrazMTway44Y9+5eTWnaxkEdhVyqKwQi2bdg7ZFdf4fkaSeOMdSR+HNclp6jAruPh9Ztea3AgXKqQzfQVyyndlyVkey2yBLaNR2UfyqSkACgKOgGBS1ucAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFAFDX9Nj1fSJ7CQ48xflOejDofzr541y1k0/UJrWb5Xicq3uR/SvpOaWOCF5pnCRxqWdj0UDkmvl/4mfFfwd4m8ZLp2jJMHQNGb5wFS4ccBQOo9ietcWMoe0jzLdHbg63JLlezI/NQDqKpXzo2eRVGa7OD29qoXd0XXqc14/sz2Y1BuoJFIpU4Nc9Pp2Z8J90nkVotKS2M06BWZwcY5rohJwWhE0pblvSfCuj3UYFzZxy+ueDW1beAPDY+ZLbafQ80uiylMA9e9dNDlkBAqfrFRPcI04djIi8IaGgA+yQPj1Srcfhnw7Gm5tOtunHy8VamWTGFNY2oreorGNj+FaQxEr6mnKh0+l6LHnbp9sB/uCoo7fSYzuWztxj0UA1hXcusBsgjHuKpvNqoB3Y/AV1Rm31B1ILodgslmpG2GJfwqzKunzQqqqFc/fcnr7AVwsX9pO3zOa2dOWYf6xjTdRx6mM5qfQ2GsLDO4W6MfcZrK1OwtwSyIqH0AxWvAQFxyTVHUxu5pQqyb3OWpFWMiAqhrQtZzwBWbICp6cVcsVyQc8V0NmCdjpLBt2AAc17R8J9JNvp76jJGQ8nEbZ6ivLvAOiTazqkVtGjbScu2OFUdzX0JZ28dpax20QAWNQBgYzVU1d3MK09LE1FFFbnMFFFFABRRRQAUUUUAFFYuo+LPDGncX3iDTID6Ncrn9DXP6t8XPh5p0DSv4ktrll/5Z2waRz+AFUoSeyFc7qivm/wAY/tHXLF4fDGkx26gEfaLw729iEHA/HNeYXPxt8f31/I9z4kuoIyflS2CxKv4AVtHDze+hPOj7for4fT4o+NVuFkbxNqjRuceYLg5WtvTvjB8QNNuMHxBPdxHoZ0ST+Yq/qcujF7RH2LRXzNpX7Qeu2hI1SKwvRjPEJjYf98nFTaz+0+PLVNH8MgSbfma5mJGfYKP51m8PNDU0z6Tor5Cuvj78R5x8s2nWSSfdP2Rc/hnJrNl+MXxCuJ4oE8T3Rdz96KNEUDueBVLCzYc6Pa/2kfG40rSx4YsZB9quk33TAkNFH2H/AALn8K+LPEo8rUZJ4ztzluOxr0bWtRu9RuZru8uZbm4lbLyytuZj7muC8Txb9zdulbzoKFMmM7yPYHtJk0myu1dpFe1ieUkZIYoCT9KqMA4yK0/CeqR3vh2zYHJWFVI+gxWfexypLJLCEUFiTGoO3r2r5WSV2fQxdkiJbTncFxmr9lb84JqnaX0cgw2Fbpg9RWtayIzDBzjr71DViua5p6XaruAwSRXWadZqyjcetYWmyRjBNb1pdIkYPmZHtWUkNSaLsumRbcjg1UudPTBGA2Kc+rwD5C4z3x6VVutVjVh8w29wBzihJBzSKl1pyH+AflWfLpQ6hR+FaM+qx7cghc9M1SbVEycsPwqrtBdsotYCN+B0pViA6dRUsl9ExyT+VV/t9upJIC+mTWkZXJZegtt44Xmq99acGlj1SJQuxhgjselK+oRyggtkgda2huYTdzEmg+cgjNSWkZ81Y1IyWxTr+Ybdw/Aetc5b+J7R9V+yxKk6jKynqrAjBUe+M813UKUqrsjkq1FBXZ9O/Bu48LppHkaZrmnX+ov/AMfAilG4EfwgHkgeor0Kvz38R2lz4Z1wCxuZktpB5tlMjkNsPbP95ehr0v4Z/tAeI9DaGy8QltZ09fl3OcToPZu/0NehLDOGiOD2qk7s+vaKx/CXiXRvFWkR6nol7HcwuPmCn5oz/dYdQa2K52rFhRTWkjWRY2dFdvuqWAJ+gpxBHBGKBhRRRQAUUUUAfnJcXjyOZGk3Z60k1ztgVt3Xt6VnSKAjNuYY6ANRH80LyGRzkcgYGa9VNmBJfXbKo2n7wzVeJ/MTdxk0wxGSMuXb0AzUaRlXCiQ8Y7DtUttsCaynma42RHHPOeldHp/2mSDaCu0MQJG9PUD2rnFheMoQ+CzbgcdK6jKw2gjDfdTbn6CtqadtSZGHf38m59rFsnbyMcZqstyYjnHOPzpL0/vSFGAKrYEo44rGTdy0WY727upo4o2ICjaG64FdRp9qLSIyN/rHAH0HYVk+HbNTOG2/KnJNb1wxOT0ramna7IkxkjZ4zWDrsBdDgcVqGTc2BnGaS4hMqED0qpx5lYS0dyX4c6s0KGyc8A8etdy028YPQ+3WvImEmn6gHj3A/e49B1rutB1xLmFVY/MR0zXy2OwzhNtHvYSspx5WbF1ZRSuH2lW/vLwapm51DSyDIhmg7SL1H1FbsG14gytuzyarXUavkEc9MVwKp0Z2On2IbXxKjKGjkGSOeanPieQICH6dwa5jVtMQsZI8ow7jjNc9eC9gbCyFx+VbwpwlsYT54noEnikuc7+lQSeKA3G815pJf3QJVlIqM3rdiQfrWqwqMvbno03iMngydOlQHX2LffJrz4Xjjndmnreydqv6tEn253reImA+/j8artrpYnL5Fcak87t8qsc+lWY47psYixn1an7GMQVWUjrYtbY9yPxxWhZ6sZGwsh3e386463s5C26aUAeij+tattJFaxbUAAHUk5JpNRWwWk9zZ8XawLPRLhg+Z5EMcZz0LcFh747159os/lXUeCQBwKXxNqLXlyEDfu06c1Qs32zKR616eFXIkediHzSseoyrBrOiCzuBnblom6lW9q8+vIJbOdopP4TjI6Gus8PXBESnggjNN8SWSzHzUTlhn616s486ucMXZ2Mbw54j1fQL5LzSNSubKdSCHhkK/mOh/GvVIvjb4x1eBLa91iaAhdpe0Cx7x/tDHP4EV4tcwGH5gDt9fSpLWXB4zntXNZX1Rsrnr2va5I2gyv8AbLprnO/zXkYsV9A2cg1t/AT4n6/Za/DpWpajNfaZM+wxTvuMef4lY8j6V5XNfC58OtH5gaREIYE4OM8ViaHqk2m36XETFXVsgitaqjJJMmF0fowl1avjy7mB89NsgP8AWpgCRkAmvjZdZ0/XLT+0bLVY9Pv8fvrdrjy1Y9yuemfSq0HibxBaSYXxO0EanHy3TSE/gCa53guqkX7XyPtKivlLT/iz4i02MBdYvbwjoZVUKf5mtKL9ojX4l8uWws3ZTjdg81nLCTXUpVEz5plyykdhUMbEQFD1NTt0PIxVJ5Bv+XjFdNyDQh/1YHpVSdwsox60+NyUAz1qrckbsg9KG1YDRtT511GOo3AYrfnOY8eprndGOZEPvmt2Vjs/DmtoPQl7mDqRxKwBHFQ6Yjz3KQpyx9egHrTr8lmY55JrV8M2ohtGuX4aU4B9FH+JrJLmkU3ZG5YRJbwiNPqT3J9adc8DGfxpiOW6c+9VNQ1Wxs0InulLgfci+Zvx9K6G0tzOzbHIrE5wcD1qfOFwAT9BXK3ni/HFnagY6NIc/pWNea5qV5kSXLBSfup8o/SsZYiC2L5GdRrTos6zM6bl6KW5x6flVCF2sZcxuxjzxz+Rrli5Lck5rfsNQtr23FreKqXCjEUo4DexrlqSjVumjWEnB3R2+ieJZEwkj/j610cWpR3ABBG7v615GHltZCrKdueDWpY6w6FQWPHTnpXiV8JreJ7VDFpq0j0a5lUjJ2kYrGvYopclcfhWbDrO8DcQw9R1pWvlccNXKqcos63KLKl7YA54OKy7izKdAT+Fa094vc/rWfPdJk4P61105SOapGDKIg5wRU8ECg5NNaYZpyT4HAFauTOdRRftwFAwMVajkRayVmdqnEyqOTWbuzVWNPzgoGTWXqmonBjRvqarXN4zAqpwKzJmLlhuA4J5Na0qet2Y1qllZEbyF3LetT2hzIM1VAwM1ZtVJYHsK9CB5kjs9Dl8tVB4HauiIFxZ7CMgHI9q5HRpwGVScGuotThc9Q3Br06bujlmtTA1S1KyEYDZODiss2/2TMudyEfIff0+tdRqkKs3zfcI6jrWS8IYvbSnIfuOcejUpwKizKSVtkgY5BQis8OQ/Xmp5fMhM0coKunykVUH365Zs1SNC3lYKOAea0IrkxyJuQ44PDVi27EMRV5pAwU+lOMgaNWbU2cbSjgZ7Y6f41BLeI0hIjIFUXk4pqksMjFW5tiSsUp3xHk96z2Y7wKsXsyk7fT0qluON2Oayk9SrF9GISq07ZOO5p8RylV2YlyTzQ2I19DH7zd2UVrXkwWBm7AYrL0j5U9OKn1OT90qcgE5NbxdokvczrnLKWyK331PSbazeJLhXlgjUJHtJDnHQEDA+prn2P7qqM3yn2rNTcdirXNK71O7vEPmTFIz0jj+Vfx7n8azr1gtqVHA9KSFspii7Utbk9s4rOTbQ0ZGalt03Kx9KjK81f0+AtA7Y5zWEVdlPQqHk4pq5FWZoNrHtSrHlOlHKBLbXLsNrO2ccHPX61J5qk4YbT6jpVNflbBqwAG5BotfcpNovQyuh+ViKuJcOR15rIjkAOM1egHmD5Tn8a5alNLU7KVVvQsSO7dcmogrHsaniifoRWhb24bA24NcrlY6o03IzFhc/wABqZLeQjkYFbUVkewpzwbF+YDiodY2VAxxHsXk1BK/UA/hV+78sA4PNZVw6jpWtNOTMatoEMrk8DrUW3PUZqRXABPU9zT49zAbVOD68V3whY82pO7KzKB95to96nt54IhhpBVPUpB53lr0Qc+5qoGz0q1LlZizpbbULVGU+eBj611ela3p8kSxm8hGRghnwQex5rzRakQVvCu4kOmmeq3BL8g7kxww5H51TeJSvIJIPyn0rz+C8uLUf6PcSxf7jkCr9p4n1WEgNMk6jtKgP6jBrdYmL3I9m1sbPiW0BtFvYmyQQsvrjsf6flXOxtlifSt8+I7a9s3tbyy8kyKR5kZyAT3x1rnYyRxnNZVXFu8TSN0tSaN8SVcV8jrWarfvKtIahMbJyxPAq9BGBGPeqUC5appLny225I47VaEc1I5Z6Xt7Cohyfc1KMZHtWW4yeMkRY7mogAZcCpAcLS20eZfeqQjWsMpEM1FfybpMdh2qdDsjzWe5LvW0npYQ9RleaqXi7s46CrbHoOwqvLyrGs2BUhOCBV0IZLaQde9UlAD1p6fghlP8QyKUddBmOkP73pW3pNt+5JxxUItT9pxgc1vW1v5dvg8cVdOnqEpHN6rFtlJA4qGLBTFaWpxguRxWXHlTis5R1GiO4iyue4otXyChHOKmcDGagYFJVcVm0NFgqGHTBp1vKYZQ2D7j1FL5TMcZyT0pkkMqHnGPWk4XVmVGTTujo7XbLErocqwyDVlSVIrC0O5kil8iQjy3Py+xrdkZEXLEDjNeTWpuErHsUaqnG5YjvGQYYZFR3d5EELM4Ht3zWLc329ylvgnu3YVRnmjh+eeb5j68k/hWlLBuWstCKuN5dI6ly5nMrEg4WqaI8pJ/hzgk9BVSXUwRiOLj1Y9aqTXjyKQ3Hpg4Ar0IqEFoeZOpKbuzYkntLcdRK/6CqU+pSPnaNo9qzS5J9KfGhPrTc29iB5Z5XLMSSe9WI4iBk0sMeBnFSkEChRJI8AGnjgUBcn3pSpwOKqwyNsk0RIWcD1qTZgVPZRgyg46UWAjkG1tvpUkeSOBSTofOb61LbqQpz3poCJATJV2KPnk1WAAlq9BzjNXFCZZjVUXd6etZVzIWmYgnGa0bp9luTnpWTH8y5PJJqpAijGCTkVOFx0FNthnnsKmIAGahITEUZb6VbtUw2ar267mxV6EZcAdM1pFCY+4+WPaO/BqkpBfA6DvUt85LbR0FQRnjOKctwJuxqGXpjFSjntTXABzSGUJDh60LR8BWPbrVCcYOfU1ZtDuUj0qY7gbcCI8quMcdatXcwVCBg84rOsXJQ+3FSzHjLGuhS0JsVbj5pM4HSs2dNrnA71cluE8zA61FMu5SaxlqUitjIINMaNiPUVJyG59KWNug5qLXHclUsQMIaCzn5XHFXB5QiUBlyQOKJEiZcDk07AUfLySA+3HIqCfUWmbFxIVRT9xe9W2iycDNZmoWypdFmOARmspx62LUmtBJtSkZdkCiJPzY/jVNiS2WO5jTyR0QfjSxR5bJFZttiIhvY8c1NHbO/rV6CFQAcVajX0qlAClDYMetW4rRV61cjHr6UN05rRRSFcrvGFHtVZjliKnuHycY+tQDGQKGIcvWngcjiiJc1aRAKEgIBEx9hVy0iVUNNZcirES7Ux7VcUBnSf69vrU8YwpqBlxMc+tXEXCZpAVT/rPxrQt0wKooMzY6j2rSjwq96qKBlLVnxGFB5PFQQriMUmoPunC54BzT43Xb1qW7sCtAuFC/jTnyD9KWD/VFu9I/PWmIlth8ue9W4RgVXi4UYqyv3M1ohFO6Y7jSYAAHekl5lH1pSTvqRkkYGfpSSDKmlUYTNB5wKBFK5XBH506ybrzT7oDJHoKhtuCMetT1GaVu+xiD3NPvXyuAelViTwaW5PyZq76CM9mxJ1NXISCmDVByd5+tWoCcdqzQwmGGqNT2qSc9SewqGP7tAF6OHMayk9VyKfGTI/zSBAFJzgAHA6c96WUAKQBgKMAVbe3jOnBxlWKKcjsTUzlylRVyjI4BCvlSemRiqmrwExxv6HFbfxAjS3vtPSFQoaEsfc8VkagT9iXk9jQnzRG1ZmZ5WKkiXA5pByOalhAweKhIVy3CmVXHpVqKMgj/AApkIGFGO1XIxkA1rFCbGbflyBioZsirbj5Ko3JwxxTasJFSRuvNEYy1IealtgCxz6VIyeJcAA9e9TKDTUGaePSqAcoLN61OOBioYh8lSk8GrQmZ07Yl/GrKH9xmqTjM5+tXn4iwOlZobIrYZmHSrzsFiPGKp2IG8nvVi84iYirW1wuY9y+Z2INSRH5KquSZjz3qdDhRWN9Rn//Z" alt="Divyansh Chaurasia" />
+        </div>
+      </div>
+      <div class="photo-upload-overlay">
+        <span class="upload-icon">📷</span>
+        <span>Change Photo</span>
+      </div>
+      <input type="file" id="photoInput" accept="image/*">
+    </div>
+
+    <div class="hero-text">
+      <div class="status-dot">Open to opportunities</div>
+      <div class="hero-tag">// portfolio.divyansh</div>
+      <h1>Divyansh <span>Chaurasia</span></h1>
+      <div class="hero-sub">Data Engineer &middot; Full-Stack Developer &middot; MCA @ IET Lucknow</div>
+      <div class="hero-desc">
+        Final-semester MCA student who builds things that move data &mdash; from distributed PySpark pipelines spanning multi-cloud environments to AI-powered safety systems. Passionate about turning raw, messy data into reliable, structured insights.
+      </div>
+    </div>
+  </div>
+
+  <!-- TABS NAV -->
+  <nav class="tabs-nav" role="tablist">
+    <button class="tab-btn active"  onclick="switchTab('about',          this)">About Me</button>
+    <button class="tab-btn"         onclick="switchTab('projects',       this)">Projects</button>
+    <button class="tab-btn"         onclick="switchTab('languages',      this)">Languages</button>
+    <button class="tab-btn"         onclick="switchTab('achievements',   this)">Achievements</button>
+    <button class="tab-btn"         onclick="switchTab('certifications', this)">Certifications</button>
+    <button class="tab-btn"         onclick="switchTab('links',          this)">Links</button>
+  </nav>
+
+  <!-- ===== ABOUT ME ===== -->
+  <div id="tab-about" class="tab-panel active">
+    <div class="stat-row">
+      <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Projects</span></div>
+      <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Problems Solved</span></div>
+      <div class="stat"><span class="stat-num">7.2</span><span class="stat-label">CGPA</span></div>
+      <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Cloud Platforms</span></div>
+    </div>
+
+    <div class="about-grid">
+      <div class="info-block">
+        <div class="info-label">&#128205; Location</div>
+        <div class="info-value">Lucknow, Uttar Pradesh, India</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">&#127891; Education</div>
+        <div class="info-value">MCA &mdash; IET Lucknow (Expected June 2026)</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">&#127919; Interests</div>
+        <div class="info-value">Data Engineering &middot; ETL Pipelines &middot; ERP Systems &middot; AI/ML &middot; Prompt Engineering</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">&#127760; Languages Known</div>
+        <div class="info-value">English &middot; Hindi (fluent in both technical &amp; administrative communication)</div>
+      </div>
+    </div>
+
+    <div class="section-heading">// professional summary</div>
+    <div class="card">
+      <p>
+        I'm a final-semester MCA candidate at IET Lucknow with a deep interest in building scalable data pipelines and intelligent systems. My work spans distributed computing across cloud platforms (Databricks, AWS EMR, Azure Synapse), full-stack web applications, and applied machine learning.
+        <br><br>
+        I thrive at the intersection of engineering and analytics &mdash; whether it's designing a Medallion architecture ETL pipeline from scratch, building an ERP system with ASP.NET, or training computer vision models for real-world safety applications. Outside of building things, I enjoy competitive problem-solving (200+ problems on LeetCode &amp; GeeksforGeeks), contributing to open-source projects, and exploring generative AI tools and prompt engineering strategies.
+      </p>
+    </div>
+
+    <div class="section-heading">// education</div>
+    <div class="card">
+      <div class="card-title">Master of Computer Applications (MCA)</div>
+      <p>Institute of Engineering &amp; Technology, Lucknow &nbsp;&middot;&nbsp; CGPA: 7.2/10 &nbsp;&middot;&nbsp; Sep 2024 &ndash; Expected June 2026</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Bachelor of Computer Applications (BCA)</div>
+      <p>University of Lucknow &nbsp;&middot;&nbsp; 68.38% &nbsp;&middot;&nbsp; Oct 2021 &ndash; Jun 2024</p>
+    </div>
+    <div class="card">
+      <div class="card-title">Class XII &mdash; Commerce Stream</div>
+      <p>Passed 2021</p>
+    </div>
+  </div>
+
+  <!-- ===== PROJECTS ===== -->
+  <div id="tab-projects" class="tab-panel">
+    <div class="section-heading">// data engineering &amp; automation</div>
+
+    <div class="card">
+      <div class="card-title">Log Analytics ETL Pipeline <span class="tag tag-data">Data Engineering</span></div>
+      <p>Production-grade distributed pipeline processing 10,000+ application log records using PySpark Medallion architecture (Bronze/Silver/Gold) across multi-cloud (Databricks, AWS EMR, Azure Synapse, HDInsight). Features 11-check Data Quality Framework, timestamp normalization across 5 log formats, latency SLA bucketing (p50/p95/p99), and 17 pytest unit tests with full layer coverage.</p>
+      <div class="tech-pills">
+        <span class="pill">PySpark</span><span class="pill">Databricks</span><span class="pill">AWS EMR</span><span class="pill">Azure Synapse</span><span class="pill">pytest</span><span class="pill">SparkSQL</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">E-commerce Sales ETL Pipeline <span class="tag tag-data">Data Engineering</span></div>
+      <p>Batch ETL pipeline processing 5,000+ e-commerce transactions in distributed mode. Modular data quality framework with 10+ automated checks (null rates, duplicates, referential integrity, business rules). Multi-stage transformations including type casting, deduplication, date normalization, and KPI enrichment (profit margin, customer segmentation, LTV). Optimized PySpark job execution through tuning of partitioning, caching, and broadcast joins.</p>
+      <div class="tech-pills">
+        <span class="pill">Python</span><span class="pill">PySpark</span><span class="pill">Databricks</span><span class="pill">AWS EMR</span><span class="pill">Azure Synapse</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Process Automation QA Initiative <span class="tag tag-data">Automation</span></div>
+      <p>Designed workflow automation and QA processes that reduced manual task completion time by 60%. Integrated automated testing frameworks with CI/CD pipelines for continuous quality assurance.</p>
+      <div class="tech-pills">
+        <span class="pill">Python</span><span class="pill">CI/CD</span><span class="pill">GitHub Actions</span><span class="pill">QA Automation</span>
+      </div>
+    </div>
+
+    <div class="section-heading">// machine learning &amp; analytics</div>
+
+    <div class="card">
+      <div class="card-title">Driver Pose Detection &amp; Alert System <span class="tag tag-ml">ML / CV</span></div>
+      <p>Real-time AI driver safety monitoring system detecting fatigue and unsafe postures using deep learning. Trained on the State Farm driver behavior dataset with distributed ML techniques for scalability. Delivered structured performance reports (accuracy, precision, recall, F1-score) for system reliability evaluation.</p>
+      <div class="tech-pills">
+        <span class="pill">Python</span><span class="pill">OpenCV</span><span class="pill">TensorFlow Lite</span><span class="pill">Deep Learning</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Customer Churn Prediction Dashboard <span class="tag tag-ml">ML / Analytics</span></div>
+      <p>Interactive analytics dashboard powered by ML models to analyze and predict customer churn. Combines data visualization with predictive modelling for actionable business insights.</p>
+      <div class="tech-pills">
+        <span class="pill">Python</span><span class="pill">Machine Learning</span><span class="pill">Dashboard</span><span class="pill">Data Viz</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Netflix Content Analysis <span class="tag tag-ml">Analytics</span></div>
+      <p>VOIS AICTE Major Project &mdash; Exploratory data analysis of Netflix catalog trends across genres and ratings. Applied statistical analysis and visualization to surface content strategy insights.</p>
+      <div class="tech-pills">
+        <span class="pill">Python</span><span class="pill">Pandas</span><span class="pill">Matplotlib</span><span class="pill">EDA</span>
+      </div>
+    </div>
+
+    <div class="section-heading">// full-stack &amp; erp systems</div>
+
+    <div class="card">
+      <div class="card-title">ERPLite Employee Management System <span class="tag tag-erp">ERP</span></div>
+      <p>Lightweight ERP-style employee management system with full CRUD operations, authentication, role management, and reporting. Built with ASP.NET Core MVC pattern and Microsoft SQL Server backend.</p>
+      <div class="tech-pills">
+        <span class="pill">ASP.NET Core</span><span class="pill">Entity Framework</span><span class="pill">SQL Server</span><span class="pill">MVC</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Resource Management Documentation Platform <span class="tag tag-web">Full Stack</span></div>
+      <p>Secure full-stack platform for document sharing and resource management with authentication, role-based access control, and file handling capabilities.</p>
+      <div class="tech-pills">
+        <span class="pill">React.js</span><span class="pill">Node.js</span><span class="pill">Supabase</span><span class="pill">Authentication</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">TravelPlus <span class="tag tag-web">Web App</span></div>
+      <p>Dynamic travel website for browsing destinations and creating personalized travel plans with responsive design and dynamic routing.</p>
+      <div class="tech-pills">
+        <span class="pill">JavaScript</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">React</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LANGUAGES ===== -->
+  <div id="tab-languages" class="tab-panel">
+    <div class="section-heading">// programming languages</div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">&#128013;</div><div class="skill-name">Python</div><div class="skill-type">Primary</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128452;</div><div class="skill-name">SQL</div><div class="skill-type">Data</div></div>
+      <div class="skill-card"><div class="skill-icon">&#9889;</div><div class="skill-name">JavaScript</div><div class="skill-type">Web</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128216;</div><div class="skill-name">TypeScript</div><div class="skill-type">Web</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128311;</div><div class="skill-name">C++</div><div class="skill-type">Systems</div></div>
+      <div class="skill-card"><div class="skill-icon">&#127760;</div><div class="skill-name">HTML / CSS</div><div class="skill-type">Web</div></div>
+    </div>
+
+    <div class="section-heading">// frameworks &amp; libraries</div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">&#128293;</div><div class="skill-name">PySpark</div><div class="skill-type">Big Data</div></div>
+      <div class="skill-card"><div class="skill-icon">&#9883;&#65039;</div><div class="skill-name">React.js</div><div class="skill-type">Frontend</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128994;</div><div class="skill-name">Node.js</div><div class="skill-type">Backend</div></div>
+      <div class="skill-card"><div class="skill-icon">&#127959;&#65039;</div><div class="skill-name">ASP.NET Core</div><div class="skill-type">Backend</div></div>
+      <div class="skill-card"><div class="skill-icon">&#129504;</div><div class="skill-name">TensorFlow</div><div class="skill-type">ML</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128065;&#65039;</div><div class="skill-name">OpenCV</div><div class="skill-type">Vision</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128060;</div><div class="skill-name">Pandas</div><div class="skill-type">Data</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128290;</div><div class="skill-name">NumPy</div><div class="skill-type">Data</div></div>
+    </div>
+
+    <div class="section-heading">// cloud &amp; data platforms</div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">&#129521;</div><div class="skill-name">Databricks</div><div class="skill-type">Cloud</div></div>
+      <div class="skill-card"><div class="skill-icon">&#9729;&#65039;</div><div class="skill-name">AWS EMR</div><div class="skill-type">Cloud</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128311;</div><div class="skill-name">Azure Synapse</div><div class="skill-type">Cloud</div></div>
+      <div class="skill-card"><div class="skill-icon">&#128451;&#65039;</div><div class="skill-name">SQL Server</div><div class="skill-type">Database</div></div>
+      <div class="skill-card"><div class="skill-icon">&#9881;&#65039;</div><div class="skill-name">GitHub Actions</div><div class="skill-type">DevOps</div></div>
+      <div class="skill-card"><div class="skill-icon">&#129514;</div><div class="skill-name">pytest</div><div class="skill-type">Testing</div></div>
+    </div>
+
+    <div class="section-heading">// proficiency</div>
+    <div class="card">
+      <div class="skill-bar-row">
+        <div class="skill-bar-meta"><span class="skill-bar-name">Python</span><span class="skill-bar-pct">90%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-bar-row">
+        <div class="skill-bar-meta"><span class="skill-bar-name">SQL &amp; SparkSQL</span><span class="skill-bar-pct">85%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-bar-row">
+        <div class="skill-bar-meta"><span class="skill-bar-name">PySpark &amp; Big Data</span><span class="skill-bar-pct">80%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-bar-row">
+        <div class="skill-bar-meta"><span class="skill-bar-name">JavaScript / React</span><span class="skill-bar-pct">75%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar-row">
+        <div class="skill-bar-meta"><span class="skill-bar-name">Machine Learning</span><span class="skill-bar-pct">72%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ACHIEVEMENTS ===== -->
+  <div id="tab-achievements" class="tab-panel">
+    <div class="achievement-card">
+      <div class="achievement-icon">&#129522;</div>
+      <div>
+        <div class="achievement-title">200+ Competitive Programming Problems</div>
+        <div class="achievement-desc">Solved 200+ problems across LeetCode, GeeksforGeeks, and HackerRank &mdash; demonstrating consistent algorithmic thinking, data structure proficiency, and structured problem-solving ability.</div>
+      </div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">&#9889;</div>
+      <div>
+        <div class="achievement-title">60% Reduction in Manual Task Completion</div>
+        <div class="achievement-desc">Designed workflow automation and QA processes that reduced manual task completion time by 60% &mdash; showcasing the ability to identify inefficiencies and implement scalable automation solutions.</div>
+      </div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">&#127758;</div>
+      <div>
+        <div class="achievement-title">Open Source Contributions</div>
+        <div class="achievement-desc">Actively contributed to open-source repositories including developer-roadmap, realworld, and IOPaint &mdash; demonstrating initiative, collaboration, and community-driven engineering culture.</div>
+      </div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">&#127891;</div>
+      <div>
+        <div class="achievement-title">Data Analytics &amp; AI Internship &mdash; Edunet Foundation</div>
+        <div class="achievement-desc">Completed professional internship at Edunet Foundation (VOIS for Tech) building NLP-based ETL workflows and incident management systems. Reduced recurring pipeline issues by 15% through structured documentation and automation.</div>
+      </div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">&#9729;&#65039;</div>
+      <div>
+        <div class="achievement-title">Multi-Cloud Pipeline Architecture</div>
+        <div class="achievement-desc">Built production-grade distributed ETL pipelines spanning 4 cloud environments (Databricks, AWS EMR, Azure Synapse, HDInsight) &mdash; processing 10,000+ records with configurable data quality frameworks and full test coverage.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <div id="tab-certifications" class="tab-panel">
+    <div class="cert-card">
+      <div class="cert-badge">&#129302;</div>
+      <div style="flex:1">
+        <div class="cert-title">Google AI Professional Certification</div>
+        <div class="cert-org">Google &middot; via Coursera</div>
+        <div style="margin-top:8px;font-size:13px;color:var(--sub);">Skills: Python, SQL, Machine Learning, TensorFlow, AI model deployment, Problem Solving</div>
+      </div>
+      <div class="cert-date">Apr 2026</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-badge">&#128202;</div>
+      <div style="flex:1">
+        <div class="cert-title">Data Analytics &amp; AI Program</div>
+        <div class="cert-org">Edunet Foundation &middot; VOIS for Tech</div>
+        <div style="margin-top:8px;font-size:13px;color:var(--sub);">Real-world NLP &amp; ETL workflows, incident tracking, SQL data transformation</div>
+      </div>
+      <div class="cert-date">Oct 2025</div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-badge">&#127942;</div>
+      <div style="flex:1">
+        <div class="cert-title">Competitive Programming</div>
+        <div class="cert-org">LeetCode &middot; GeeksforGeeks &middot; HackerRank</div>
+        <div style="margin-top:8px;font-size:13px;color:var(--sub);">200+ verified problem solutions across Data Structures &amp; Algorithms</div>
+      </div>
+      <div class="cert-date">Ongoing</div>
+    </div>
+  </div>
+
+  <!-- ===== LINKS ===== -->
+  <div id="tab-links" class="tab-panel">
+    <div class="links-grid">
+      <a class="link-card" href="https://github.com/DivyanshCh39?tab=repositories" target="_blank" rel="noopener">
+        <div class="link-icon" style="background:rgba(36,41,47,0.07);border:1px solid rgba(36,41,47,0.12);">&#128025;</div>
+        <div>
+          <div class="link-name">GitHub</div>
+          <div class="link-url">github.com/DivyanshCh39</div>
+        </div>
+        <span class="arrow">&#8599;</span>
+      </a>
+
+      <a class="link-card" href="https://linkedin.com/in/divyanshch" target="_blank" rel="noopener">
+        <div class="link-icon" style="background:rgba(0,119,181,0.08);border:1px solid rgba(0,119,181,0.16);">&#128188;</div>
+        <div>
+          <div class="link-name">LinkedIn</div>
+          <div class="link-url">linkedin.com/in/divyanshch</div>
+        </div>
+        <span class="arrow">&#8599;</span>
+      </a>
+
+      <a class="link-card" href="https://leetcode.com/u/Divy_an5h" target="_blank" rel="noopener">
+        <div class="link-icon" style="background:rgba(255,161,22,0.09);border:1px solid rgba(255,161,22,0.18);">&#9889;</div>
+        <div>
+          <div class="link-name">LeetCode</div>
+          <div class="link-url">leetcode.com/u/Divy_an5h</div>
+        </div>
+        <span class="arrow">&#8599;</span>
+      </a>
+
+      <a class="link-card" href="mailto:divc0309@gmail.com">
+        <div class="link-icon" style="background:rgba(184,77,10,0.07);border:1px solid rgba(184,77,10,0.15);">&#9993;&#65039;</div>
+        <div>
+          <div class="link-name">Email</div>
+          <div class="link-url">divc0309@gmail.com</div>
+        </div>
+        <span class="arrow">&#8599;</span>
+      </a>
+    </div>
+
+    <div class="section-heading" style="margin-top:32px">// contact details</div>
+    <div class="card" style="display:flex;gap:36px;flex-wrap:wrap;align-items:center;">
+      <div>
+        <div class="info-label" style="margin-bottom:6px">&#128222; Phone</div>
+        <div style="font-size:15px;color:var(--text);font-weight:500;">+91 9260949347</div>
+      </div>
+      <div>
+        <div class="info-label" style="margin-bottom:6px">&#128205; Location</div>
+        <div style="font-size:15px;color:var(--text);font-weight:500;">Lucknow, Uttar Pradesh, India</div>
+      </div>
+      <div>
+        <div class="info-label" style="margin-bottom:6px">&#128336; Status</div>
+        <div style="font-size:15px;color:var(--teal);font-weight:600;">Open to opportunities</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- CROP MODAL -->
+  <div class="crop-modal-backdrop" id="cropModal">
+    <div class="crop-modal">
+      <div class="crop-modal-title">Crop Your Photo</div>
+      <div class="crop-modal-sub">// drag to select area &middot; handles se resize karo</div>
+      <div class="crop-canvas-wrap" id="cropWrap">
+        <canvas id="cropCanvas"></canvas>
+        <div class="crop-selection" id="cropSelection">
+          <div class="crop-handle nw" data-handle="nw"></div>
+          <div class="crop-handle ne" data-handle="ne"></div>
+          <div class="crop-handle sw" data-handle="sw"></div>
+          <div class="crop-handle se" data-handle="se"></div>
+        </div>
+      </div>
+      <div class="crop-hint">&#128073; Selection ke andar drag karo move karne ke liye &middot; Corners se resize karo</div>
+      <div class="crop-actions">
+        <button class="btn-cancel" id="cancelCrop">Cancel</button>
+        <button class="btn-crop" id="applyCrop">&#9986;&#65039; Apply Crop</button>
+      </div>
+    </div>
+  </div>
+
+<div class="footer">&lt;/&gt; crafted with precision &middot; divyansh chaurasia &middot; 2026</div>
+</div>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.getElementById("tab-" + id).classList.add("active");
+    btn.classList.add("active");
+  }
+
+  // ── PHOTO UPLOAD + CROP ──
+  const photoWrap  = document.querySelector(".photo-wrap");
+  const photoInput = document.getElementById("photoInput");
+  const photoImg   = document.querySelector(".photo-img");
+  const cropModal  = document.getElementById("cropModal");
+  const cropCanvas = document.getElementById("cropCanvas");
+  const cropWrap   = document.getElementById("cropWrap");
+  const cropSel    = document.getElementById("cropSelection");
+  const ctx        = cropCanvas.getContext("2d");
+
+  let origImage    = new Image();
+  let sel          = { x: 0, y: 0, w: 100, h: 100 };
+  let activeHandle = null;
+  let dragStart    = null;
+  let selStart     = null;
+
+  photoWrap.addEventListener("click", () => photoInput.click());
+
+  photoInput.addEventListener("change", function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+      origImage = new Image();
+      origImage.onload = function() {
+        cropCanvas.width  = origImage.width;
+        cropCanvas.height = origImage.height;
+        ctx.drawImage(origImage, 0, 0);
+        // default: full image
+        sel = { x: 0, y: 0, w: origImage.width, h: origImage.height };
+        cropModal.classList.add("open");
+        setTimeout(renderSel, 50); // wait for modal layout
+      };
+      origImage.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+    this.value = "";
+  });
+
+  // Convert mouse/touch pos to IMAGE coordinates
+  function getImgPos(e) {
+    const rect  = cropWrap.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e;
+    const relX  = (touch.clientX - rect.left)  / rect.width;
+    const relY  = (touch.clientY - rect.top)   / rect.height;
+    return {
+      x: relX * origImage.width,
+      y: relY * origImage.height
+    };
+  }
+
+  // Convert IMAGE coords to CSS px on cropWrap
+  function imgToCss(ix, iy, iw, ih) {
+    const rect = cropWrap.getBoundingClientRect();
+    return {
+      left:   (ix / origImage.width)  * rect.width,
+      top:    (iy / origImage.height) * rect.height,
+      width:  (iw / origImage.width)  * rect.width,
+      height: (ih / origImage.height) * rect.height,
+    };
+  }
+
+  function renderSel() {
+    const css = imgToCss(sel.x, sel.y, sel.w, sel.h);
+    cropSel.style.left   = css.left   + "px";
+    cropSel.style.top    = css.top    + "px";
+    cropSel.style.width  = css.width  + "px";
+    cropSel.style.height = css.height + "px";
+  }
+
+  // ── Drag on crop selection (move) ──
+  cropSel.addEventListener("mousedown", function(e) {
+    if (e.target.classList.contains("crop-handle")) return;
+    e.preventDefault();
+    dragStart    = getImgPos(e);
+    selStart     = { ...sel };
+    activeHandle = "move";
+    bindMove();
+  });
+
+  // ── Handles (resize) ──
+  document.querySelectorAll(".crop-handle").forEach(h => {
+    h.addEventListener("mousedown", function(e) {
+      e.stopPropagation(); e.preventDefault();
+      dragStart    = getImgPos(e);
+      selStart     = { ...sel };
+      activeHandle = h.dataset.handle;
+      bindMove();
+    });
+  });
+
+  // ── Draw new selection on canvas ──
+  cropWrap.addEventListener("mousedown", function(e) {
+    if (e.target === cropSel || e.target.classList.contains("crop-handle")) return;
+    e.preventDefault();
+    dragStart    = getImgPos(e);
+    selStart     = null;
+    activeHandle = "new";
+    bindMove();
+  });
+
+  function bindMove() {
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup",   onUp);
+  }
+
+  function onMove(e) {
+    if (!activeHandle) return;
+    const pos = getImgPos(e);
+    const dx  = pos.x - dragStart.x;
+    const dy  = pos.y - dragStart.y;
+    const IW  = origImage.width;
+    const IH  = origImage.height;
+    const MIN = 20;
+
+    if (activeHandle === "new") {
+      const x1 = Math.max(0, Math.min(dragStart.x, pos.x));
+      const y1 = Math.max(0, Math.min(dragStart.y, pos.y));
+      const x2 = Math.min(IW, Math.max(dragStart.x, pos.x));
+      const y2 = Math.min(IH, Math.max(dragStart.y, pos.y));
+      sel = { x: x1, y: y1, w: x2 - x1, h: y2 - y1 };
+
+    } else if (activeHandle === "move") {
+      sel.x = Math.max(0, Math.min(IW - selStart.w, selStart.x + dx));
+      sel.y = Math.max(0, Math.min(IH - selStart.h, selStart.y + dy));
+
+    } else {
+      let { x, y, w, h } = selStart;
+      if (activeHandle.includes("e")) w = Math.max(MIN, Math.min(IW - x, w + dx));
+      if (activeHandle.includes("s")) h = Math.max(MIN, Math.min(IH - y, h + dy));
+      if (activeHandle.includes("w")) {
+        const nx = Math.max(0, Math.min(x + w - MIN, x + dx));
+        w = w + (x - nx); x = nx;
+      }
+      if (activeHandle.includes("n")) {
+        const ny = Math.max(0, Math.min(y + h - MIN, y + dy));
+        h = h + (y - ny); y = ny;
+      }
+      sel = { x, y, w, h };
+    }
+    renderSel();
+  }
+
+  function onUp() {
+    activeHandle = null;
+    document.removeEventListener("mousemove", onMove);
+    document.removeEventListener("mouseup",   onUp);
+  }
+
+  // ── APPLY CROP ──
+  document.getElementById("applyCrop").addEventListener("click", function() {
+    if (!origImage.src || sel.w < 5 || sel.h < 5) return;
+    const out  = document.createElement("canvas");
+    out.width  = Math.round(sel.w);
+    out.height = Math.round(sel.h);
+    const octx = out.getContext("2d");
+    octx.drawImage(
+      origImage,
+      Math.round(sel.x), Math.round(sel.y),
+      Math.round(sel.w), Math.round(sel.h),
+      0, 0,
+      Math.round(sel.w), Math.round(sel.h)
+    );
+    photoImg.src = out.toDataURL("image/jpeg", 0.95);
+    cropModal.classList.remove("open");
+  });
+
+  document.getElementById("cancelCrop").addEventListener("click", function() {
+    cropModal.classList.remove("open");
+  });
+
+  window.addEventListener("resize", () => {
+    if (cropModal.classList.contains("open")) renderSel();
+  });
+</script>
+</body>
+</html>
